@@ -1,12 +1,12 @@
 let { contas } = require('../bancodedados');
 
 // VERIFICA SE A SENHA É VALIDA
-const verificaSenha = ({ senha }) => {
-    const verificaSenha = contas.find((conta) => {
-        return conta.usuario.senha === senha;
+const verificaSenha = ({ senha, numero_conta }) => {
+    const senhaVerificada = contas.find((conta) => {
+        return conta.numero === Number(numero_conta);
     });
 
-    if (!verificaSenha) {
+    if (!senhaVerificada || senhaVerificada.usuario.senha !== senha) {
         return false;
     }
     return true;
